@@ -1,0 +1,6 @@
+이미지 파일 경로
+예시 - 
+F:\teamproject\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\music\resources\image
+
+찾는방법
+F:\teamproject 이 부분을 이클립스의 자신의 workspace  로 변경해서 위의 경로에 이미지 파이을 넣는다

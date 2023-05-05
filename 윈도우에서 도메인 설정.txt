@@ -1,0 +1,13 @@
+C:\Windows\System32\drivers\etc\hosts
+
+-- 생략..
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+
+	127.0.0.1		musicstreaming.com
+
+--------------
+톰캣에서  host name을 localhost --> 127.0.0.1
+Port를 8080에서 80으로 변경

@@ -1,0 +1,12 @@
+단축키
+
+ctrl + k  : 다음찾기
+ctrl+shift + k  : 이전찾기
+
+ctrl+shift+R : (전체프로젝트)파일 찾기
+
+ctrl+h : 전체에서 문자열 찾기
+
+ctrl+l : 라인이동
+
+ctrl+o : 해당 클래스의 맴버들...

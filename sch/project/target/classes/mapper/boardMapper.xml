@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.board.mappers.board">
+	<!-- **BoardDAOImpl의 namespace == 매퍼의 namespace -->
+	<!-- **파라미터 타입(parameterType)은 매퍼에 들어오는 데이터, 리설트 타입(resultType)은 매퍼가 내보내는 데이터 -->
+
+	<!-- 게시물 목록 -->
+	<select id="list" resultType="com.board.domain.BoardVO">
+	<![CDATA[
+	select 
+		id, title, singersong, img, reg_user,reg_date,up_user,up_date
+	from music.album
+	]]>
+	</select>
+
+	<!-- 게시물 작성 -->
+	<insert id="write" parameterType="com.board.domain.BoardVO">
+	<![CDATA[
+		insert into
+		music.album(id, title, singersong)
+		values(#{id}, #{title}, #{singersong})
+		
+		
+		]]>
+	</insert>
+
+
+	<!-- 게시물 조회 -->
+	<select id="view" parameterType="int"
+		resultType="com.board.domain.BoardVO">
+		<![CDATA[
+		select
+		id, title, singersong
+		from
+		music.album
+		where
+		id = #{id}
+		]]>
+	</select>
+
+	<!-- 게시물 수정 -->
+	<update id="modify" parameterType="com.board.domain.BoardVO">
+	<![CDATA[
+		update music.album
+		set
+		title =
+		#{title},
+		singersong = #{singersong}
+		where id = #{id}
+		]]>
+	</update>
+
+	<!-- 게시물 삭제 -->
+	<delete id="delete" parameterType="int">
+	<![CDATA[
+		delete
+		from music.album
+		where id
+		= #{id}
+		]]>
+	</delete>
+
+	<!-- 게시물 총 갯수 + 페이징 -->
+	<select id="count" resultType="int">
+	<![CDATA[
+		select count(id) from music.album
+		]]>
+	</select>
+
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="com.board.domain.BoardVO">
+	<![CDATA[
+		select
+		id, title, singersong
+		from music.album
+		order by id desc
+		limit #{displayPost}, #{postNum}
+		]]>
+	</select>
+
+	<!-- 게시물 목록 + 페이징 + 검색 -->
+	<select id="listPageSearch" parameterType="hashMap" resultType="com.board.domain.BoardVO">
+		<![CDATA[
+		select
+  		id, title, singersong 
+ 		from music.album
+ 		]]>
+
+		<if test='searchType.equals("title")'>
+		<![CDATA[
+			WHERE title LIKE concat('%', #{keyword}, '%')
+			]]>
+		</if>
+
+		<if test='searchType.equals("singersong")'>
+		<![CDATA[
+			WHERE content LIKE concat('%', #{keyword}, '%')
+			]]>
+		</if>
+
+		<if test='searchType.equals("title_content")'>
+		<![CDATA[
+			WHERE title LIKE concat('%', #{keyword}, '%')
+			or singersong
+			LIKE concat('%', #{keyword}, '%')
+			]]>
+		</if>
+
+		<![CDATA[
+		order by id desc
+		limit #{displayPost}, #{postNum}
+		]]>
+	</select>
+
+	<!-- 게시물 총 갯수 + 검색 적용 -->
+	<select id="searchCount" parameterType="hashMap" resultType="int">
+	<![CDATA[
+		select count(id) from music.album
+	]]>
+		<if test='searchType.equals("title")'>
+		<![CDATA[
+			WHERE title LIKE concat('%', #{keyword}, '%')
+			]]>
+		</if>
+
+		<if test='searchType.equals("singersong")'>
+		<![CDATA[
+			WHERE singersong LIKE concat('%', #{keyword}, '%')
+			]]>
+		</if>
+
+		<if test='searchType.equals("title_content")'>
+		<![CDATA[
+			WHERE title LIKE concat('%', #{keyword}, '%')
+			or singersong LIKE concat('%', #{keyword}, '%')
+			]]>
+		</if>
+
+	</select>
+</mapper>

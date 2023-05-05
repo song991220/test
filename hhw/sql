@@ -1,0 +1,24 @@
+
+
+INSERT INTO music.comcode (parentscd,groupcd,code,value,orderseq ,delyn,reg_user,reg_date,up_user,up_date) VALUES
+	 ('001','boardt','001','앨범',1,'N','admin','2022-07-10',NULL,NULL),
+	 ('001','boardt','002','Q&A',2,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','etc','001','OST',1,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','etc','002','클래식',2,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','etc','003','재즈',3,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','foc','004','pop',4,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','foc','005','락/메탈',5,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','foc','006','R&B/Soul',6,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','koc','007','발라드',7,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','koc','008','댄스',8,'N','admin','2022-07-10',NULL,NULL),
+	 ('002','koc','009','힙팝',9,'N','admin','2022-07-10',NULL,NULL),
+	 ('003','member','001','관리자',1,'N','admin','2022-07-10',NULL,NULL),
+	 ('003','member','002','일반회원',2,'N','admin','2022-07-10',NULL,NULL),
+	 ('003','member','003','유료회원',3,'N','admin','2022-07-10',NULL,NULL),
+	 ('003','member','004','탈퇴/휴먼회원',4,'N','admin','2022-07-10',NULL,NULL),
+   ('004','auth','001','관리자',1,'N','admin','2022-07-10',NULL,NULL),
+   ('004','auth','002','매니저',2,'N','admin','2022-07-10',NULL,NULL),
+   ('004','auth','003','유저(유료회원)',3,'N','admin','2022-07-10',NULL,NULL),
+   ('004','auth','004','유저(무료회원)',4,'N','admin','2022-07-10',NULL,NULL);
+   
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='music'>
+	<select id="selectComcode" parameterType="hashMap"
+		resultType="com.spring.project.vo.ComcodeVo">
+	<![CDATA[
+	select * from comcode
+	]]>
+	</select>
+
+	<insert id="insertComcode" parameterType="hashMap">
+	<![CDATA[
+	insert into comcode
+	(
+		groupcd,
+		code,
+		value,
+		delyn,
+		reg_user, 
+		reg_date
+	)
+	values
+	(
+		#{groupcd},
+		#{code},
+		#{value},
+		'N',
+		'admin',
+		now()
+)
+	]]>
+	</insert>
+
+	<!-- 디테일 -->
+	<!-- resultType 은 parameterType과 무슨 차이인가? -->
+	<!-- resultType="com.spring.project.vo.ComcodeVo"  -->
+	<select id="detail" parameterType="hashMap" resultType="hashMap">
+	<![CDATA[
+	select
+		groupcd,
+		code,
+		value,
+		delyn,
+		reg_user,
+		reg_date
+	from
+		comcode
+	where
+		groupcd = #{groupcd} and code = #{code}
+	]]>
+	</select>
+
+	<update id="update">
+<![CDATA[
+	update
+		comcode
+	set
+		value=#{value},
+		delyn = #{delyn}
+	where
+		groupcd = #{groupcd} and code = #{code}
+]]>
+	</update>
+
+<!-- 삭제 -->
+	<update id="delete">
+<![CDATA[
+	update
+		comcode
+	set
+		delyn = "Y"
+	where
+		groupcd = #{groupcd} and code = #{code}
+]]>
+	</update>
+
+
+</mapper>
+  
